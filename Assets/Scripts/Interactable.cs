@@ -4,11 +4,15 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
+    //add or remove an interaction event component to this gameobject
+    public bool useEvents;
     //message displayed to player when looking at an intaractable
     public string promptMessage;
 
     public void BaseInteract()
     {
+        if(useEvents)
+            GetComponent<InteractionEvent>().OnInteract.Invoke();
         Interact();
     }
 
